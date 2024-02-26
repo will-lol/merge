@@ -18,7 +18,7 @@
 					};
 					# defaultPackage = example;
 					devShell = pkgs.mkShell {
-						packages = with pkgs; [ ];
+						packages = with pkgs; [ go gopls ];
 						shellHook = ''
 						'';
 					};
