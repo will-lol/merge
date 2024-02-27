@@ -18,14 +18,13 @@
             hash = "sha256-NZIzT8BdtgKiE3RbePWEY1E5TWe9mr2LSRhhmxzWzd8=";
           };
           nativeBuildInputs = with pkgs; [ gzip autoPatchelfHook ];
-          buildInputs = with pkgs; [ openssl glibc gcc-unwrapped zlib ];
+          buildInputs = with pkgs; [ glib ];
           unpackPhase = ''
             cp $src src.gz 
             mkdir $out
             ${pkgs.gzip}/bin/gzip -c -d src.gz > $out/javy
           '';
           installPhase = ''
-            echo $unpackPhase
             runHook preInstall
             install -m755 -D $out/javy $out/bin/javy
             runHook postInstall
