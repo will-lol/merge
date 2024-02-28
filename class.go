@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func ClassMergeFunc(existing any, incoming any) (committed any, remaining any) {
+func ClassMergeFunc(existing any, incoming any) (remaining any, committed any) {
 	existingString := fmt.Sprint(existing)
 	incomingString := fmt.Sprint(incoming)
 	existingClasses := strings.Split(existingString, " ")

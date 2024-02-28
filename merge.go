@@ -10,7 +10,7 @@ type merger struct {
 
 type Attrs map[string]any
 
-type MergeFunc func(existing any, incoming any) (committed any, remaining any)
+type MergeFunc func(existing any, incoming any) (remaining any, committed any)
 
 func New(attrsFuncMap map[string][]MergeFunc) Merger {
 	for _, funcs := range attrsFuncMap {
