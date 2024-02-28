@@ -14,7 +14,7 @@ log.Println(res)
 // 
 ```
 It also supports tw-merge through [goja](https://github.com/dop251/goja).
-```
+```go
 twMerge, err := merge.NewTailwindMerge()
 if err != nil {
     log.Fatalln(err)
@@ -31,7 +31,7 @@ log.Println(res)
 // "map[class:hover:bg-dark-red p-3 bg-[#B91C1C]]"
 ```
 It allows you to define your own merge logic by defining a custom MergeFunc.
-```
+```go
 // MergeId prioritises any ID starting with '!'
 func MergeId(existing any, incoming any) (remaining any, committed any) {
 	const exclaimationMark = rune(33) // 33 is the char code for !
