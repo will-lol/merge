@@ -54,7 +54,7 @@ func MergeId(existing any, incoming any) (remaining any, committed any) {
 }
 ```
 Then using it in your merger.
-```
+```go
 merger := merge.New(map[string][]merge.MergeFunc{
     "class": {merge.ClassMergeFunc},
     "id": {MergeId},
