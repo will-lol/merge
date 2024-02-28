@@ -15,7 +15,7 @@ func TestTailwindMergeFuncSimple(t *testing.T) {
 		"class": {merger.TailwindMergeFunc},
 	})
 
-	attrs := m.Merge(Attrs{"class": "px-2 py-1 bg-red hover:bg-dark-red"}, Attrs{"class": "p-3 bg-[#B91C1C]"})
+	attrs := m.Merge(map[string]any{"class": "px-2 py-1 bg-red hover:bg-dark-red"}, map[string]any{"class": "p-3 bg-[#B91C1C]"})
 	fmt.Println(attrs)
 
 	const expected = "hover:bg-dark-red p-3 bg-[#B91C1C]"

@@ -15,7 +15,7 @@ func TestClassMergeFuncSimple(t *testing.T) {
 	existingClasses := []string{"px-3", "mx-2", "bg-red-500"}
 	incomingClasses := []string{"font-bold"}
 
-	res := m.Merge(Attrs{"class": strings.Join(existingClasses, " ")}, Attrs{"class": strings.Join(incomingClasses, " ")})
+	res := m.Merge(map[string]any{"class": strings.Join(existingClasses, " ")}, map[string]any{"class": strings.Join(incomingClasses, " ")})
 	fmt.Println(res)
 
 	for _, val := range []string{"px-3", "mx-2", "bg-red-500", "font-bold"} {
@@ -36,7 +36,7 @@ func TestClassMergeFuncCollision(t *testing.T) {
 	existingClasses := []string{"px-4", "mx-2", "bg-red-500"}
 	incomingClasses := []string{"font-bold", "px-4"}
 
-	res := m.Merge(Attrs{"class": strings.Join(existingClasses, " ")}, Attrs{"class": strings.Join(incomingClasses, " ")})
+	res := m.Merge(map[string]any{"class": strings.Join(existingClasses, " ")}, map[string]any{"class": strings.Join(incomingClasses, " ")})
 	fmt.Println(res)
 
 	classesStr := fmt.Sprint(res["class"])

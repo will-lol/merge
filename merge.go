@@ -1,17 +1,14 @@
-// Package merge defines the main Merger interface and its implementation. Import and use this package to instantiate a Merger.
+// Package merge defines the main Merger interface and its implementation. Import and use this package to instantiate a Merger. This package is used primarily to manage the merging of HTML attribute sets.
 package merge
 
 // The Merger type merges two attribute sets. These may be any kind of attributes but this package was made for merging HTML attributes
 type Merger interface {
-	Merge(existing Attrs, incoming Attrs) Attrs
+	Merge(existing map[string]any, incoming map[string]any) map[string]any
 }
 
 type merger struct {
 	AttrsFuncMap map[string][]MergeFunc
 }
-
-// This is the attributes type used by this package. It is meant to be compatible with other attribute types used in other libraries.
-type Attrs map[string]any
 
 // A MergeFunc is a function that defines how two conflicting attributes should be merged.
 // MergeFuncs should prioritise the incoming values and override existing values.
@@ -44,7 +41,7 @@ func isFullyMerged(remaining any) bool {
 }
 
 // The main Merge function merges two attribute sets based on the config in its Merger object. The 'incoming' attributes are always prioritised over the 'existing' attributes.
-func (m merger) Merge(existing Attrs, incoming Attrs) Attrs {
+func (m merger) Merge(existing map[string]any, incoming map[string]any) map[string]any {
 	for key, existingValue := range existing {
 		incomingValue, ok := incoming[key]
 
