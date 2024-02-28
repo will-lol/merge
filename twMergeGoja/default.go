@@ -5,8 +5,12 @@ import (
 	"errors"
 
 	"github.com/dop251/goja"
-	"github.com/will-lol/merge"
 )
+
+type TwMerge interface {
+	Merge(existing string, incoming string) (*string, error)
+	Close()
+}
 
 type twMerge struct {
 	Runtime *goja.Runtime
@@ -16,7 +20,7 @@ type twMerge struct {
 //go:embed lib/bundle.js
 var twMergeJs string
 
-func NewTwMerge() (merge.TwMerge, error) {
+func NewTwMerge() (TwMerge, error) {
 	vm := goja.New()
 
 	_, err := vm.RunScript("twMerge.js", twMergeJs)
@@ -47,7 +51,7 @@ func NewTwMerge() (merge.TwMerge, error) {
 func (m twMerge) Merge(existing string, incoming string) (*string, error) {
 	f := *m.Func
 
-	res, err := f(goja.Undefined(), m.Runtime.ToValue(incoming), m.Runtime.ToValue(existing))
+	res, err := f(goja.Undefined(), m.Runtime.ToValue(existing), m.Runtime.ToValue(incoming))
 	if err != nil {
 		return nil, err
 	}
