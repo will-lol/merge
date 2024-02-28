@@ -18,7 +18,7 @@ type MergeFunc func(existing any, incoming any) (remaining any, committed any)
 
 // New instantiates a Merger for you. You must pass an 'attrsFuncMap' that defines the MergeFuncs, though this may be empty.
 // A string key is used for the name of the attribute. A slice of MergeFuncs is used to define the merge behaviour for this attribute.
-// When Merger.Merge is called, the MergeFuncs are iterated through, which the 'remaining' and 'committed' values of each being passed into the following MergeFunc. The MergeFunc with index 0 is called first.
+// When Merger.Merge is called, the MergeFuncs are iterated through, with the 'remaining' and 'committed' values of each being passed into the following MergeFunc. The MergeFunc with index 0 is called first.
 // If a MergeFunc leaves some part of an attribute un-merged in the 'remaining' variable, it will be handled by MergeFuncs defined with a higher index in the array.
 // The DefaultMergeFunc is added to the end of all slices of MergeFuncs that simply discards all remaining attributes.
 func New(attrsFuncMap map[string][]MergeFunc) Merger {

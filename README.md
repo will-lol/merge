@@ -1,4 +1,5 @@
 # Merge
+[![Go Reference](https://pkg.go.dev/badge/github.com/will-lol/merge.svg)](https://pkg.go.dev/github.com/will-lol/merge)
 Merge is a simple Go package to merge HTML attributes.
 ```go
 merger := merge.New(map[string][]merge.MergeFunc{
