@@ -1,4 +1,4 @@
-package twMergeGoja
+package twmergegoja
 
 import (
 	"fmt"

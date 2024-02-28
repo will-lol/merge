@@ -1,5 +1,5 @@
-// Package twMergeGoja manages the Goja runtime and the running of the tailwind-merge JavaScript bundle. The bundle is fetched and built using updateTwMerge.sh. It is embedded in this Go package using [embed].
-package twMergeGoja
+// Package twmergegoja manages the Goja runtime and the running of the tailwind-merge JavaScript bundle. The bundle is fetched and built using updateTwMerge.sh. It is embedded in this Go package using [embed].
+package twmergegoja
 
 import (
 	_ "embed"

@@ -1,5 +1,5 @@
 .direnv
 result
-twMergeGoja/lib/bundle.js
-twMergeGoja/lib/tw-merge.js
-twMergeGoja/lib/node_modules
+twmergegoja/lib/bundle.js
+twmergegoja/lib/tw-merge.js
+twmergegoja/lib/node_modules
