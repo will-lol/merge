@@ -1,11 +1,15 @@
 import { twMerge } from "./tw-merge.js"
 
+// Read input from stdin
+const input = readInput();
+// Call the function with the input
+const result = foo(input);
+// Write the result to stdout
+writeOutput(result);
+
 // The main function.
-export function main() {
-    // Read input from stdin
-    const input = readInput();
-    // Write the result to stdout
-    writeOutput(twMerge(input));
+function foo(input) {
+    return twMerge(input);
 }
 
 // Read input from stdin

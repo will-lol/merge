@@ -42,7 +42,7 @@
         };
         # defaultPackage = example;
         devShell.${system} = pkgs.mkShell {
-          packages = with pkgs; [ go gopls javy ];
+          packages = with pkgs; [ nodejs_18 go gopls javy esbuild nodePackages.typescript-language-server wasmtime ];
           shellHook = ''
           '';
         };
