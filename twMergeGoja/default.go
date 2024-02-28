@@ -1,3 +1,4 @@
+// Package twMergeGoja manages the Goja runtime and the running of the tailwind-merge JavaScript bundle. The bundle is fetched and built using updateTwMerge.sh. It is embedded in this Go package using [embed].
 package twMergeGoja
 
 import (
@@ -20,6 +21,7 @@ type twMerge struct {
 //go:embed lib/bundle.js
 var twMergeJs string
 
+// NewTwMerge is a long running function (upwards of 10ms). I suggest you run it in a seperate goroutine.
 func NewTwMerge() (TwMerge, error) {
 	vm := goja.New()
 
