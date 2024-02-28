@@ -13,11 +13,8 @@ log.Println(res)
 // map[class:px-4 font-bold mx-2 bg-red-500]
 // 
 ```
+## tailwind-merge
 It also supports [tailwind-merge](https://github.com/dcastil/tailwind-merge) through [goja](https://github.com/dop251/goja).
-
-⚠️ [tailwind-merge](https://github.com/dcastil/tailwind-merge) support is rather slow due to the JavaScript runtime running in the background. Unfortunately this is the best solution I have found to use [tailwind-merge](https://github.com/dcastil/tailwind-merge) for now. Please refer to the [tailwind-merge](https://github.com/dcastil/tailwind-merge) documentation for details on usage. 
-
-The slowest function is by far merge.NewTailwindMerge(). I suggest you run this in a separate goroutine! Subsequent calls to merger.Merge will complete in under 1ms.
 ```go
 twMerge, err := merge.NewTailwindMerge()
 if err != nil {
@@ -34,6 +31,11 @@ res := merger.Merge(map[string]any{
 log.Println(res)
 // "map[class:hover:bg-dark-red p-3 bg-[#B91C1C]]"
 ```
+⚠️ [tailwind-merge](https://github.com/dcastil/tailwind-merge) support is rather slow due to the JavaScript runtime running in the background. Unfortunately this is the best solution I have found to use [tailwind-merge](https://github.com/dcastil/tailwind-merge) for now. Please refer to the [tailwind-merge](https://github.com/dcastil/tailwind-merge) documentation for details on usage. 
+
+The slowest function is by far merge.NewTailwindMerge(). I suggest you run this in a separate goroutine! Subsequent calls to merger.Merge will complete in under 1ms.
+
+## Custom merge logic
 It allows you to define your own merge logic by defining a custom MergeFunc.
 ```go
 // MergeId prioritises any ID starting with '!'
